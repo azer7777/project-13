@@ -3,6 +3,7 @@ import pytest
 from profiles.models import Profile
 from django.contrib.auth.models import User
 
+
 @pytest.mark.django_db
 def test_create_profile():
     user = User.objects.create(username="testuser")

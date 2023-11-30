@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Letting
 
+
 def index(request):
     """
     Renders the index page displaying a list of all lettings.
@@ -14,6 +15,7 @@ def index(request):
     lettings_list = Letting.objects.all()
     context = {"lettings_list": lettings_list}
     return render(request, "lettings/index.html", context)
+
 
 def letting(request, letting_id):
     """
@@ -32,4 +34,3 @@ def letting(request, letting_id):
         "address": letting.address,
     }
     return render(request, "lettings/letting.html", context)
-

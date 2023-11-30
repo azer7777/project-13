@@ -1,6 +1,7 @@
 from django.urls import reverse, resolve
 from profiles.views import index, profile
 
+
 def test_index_url():
     """
     Test that the 'index' URL resolves to the correct view function.
@@ -12,8 +13,9 @@ def test_index_url():
     - Ensure that the 'index' URL is correctly configured in the 'urls.py' file.
 
     """
-    url = reverse('profiles:index')
+    url = reverse("profiles:index")
     assert resolve(url).func == index
+
 
 def test_profile_url():
     """
@@ -27,5 +29,5 @@ def test_profile_url():
     - Provide a valid username as an argument to the 'reverse' function.
 
     """
-    url = reverse('profiles:profile', args=['testuser'])
+    url = reverse("profiles:profile", args=["testuser"])
     assert resolve(url).func == profile

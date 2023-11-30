@@ -10,7 +10,7 @@ def test_index_view(client):
     Test that the index view displays a list of users.
     """
     user = User.objects.create(username="testuser")
-    profile = Profile.objects.create(user=user, favorite_city="Test City")
+    Profile.objects.create(user=user, favorite_city="Test City")
     url = reverse("profiles:index")
     response = client.get(url)
 
@@ -27,7 +27,7 @@ def test_profile_view(client):
     Test that the profile view displays user details including favorite_city.
     """
     user = User.objects.create(username="testuser")
-    profile = Profile.objects.create(user=user, favorite_city="Test City")
+    Profile.objects.create(user=user, favorite_city="Test City")
     url = reverse("profiles:profile", args=["testuser"])
     response = client.get(url)
 

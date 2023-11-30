@@ -24,4 +24,3 @@ handler404: Handles 404 (Page Not Found) errors, using views.custom_404 as the c
 
 handler500: Handles 500 (Internal Server Error) errors, using views.custom_500 as the custom view.
 """
-
