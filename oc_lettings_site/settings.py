@@ -1,6 +1,8 @@
 import os
-
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -114,3 +116,29 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static", ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+load_dotenv()
+SENTRY_DSN = os.getenv('SENTRY_DSN', default='')
+
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    integrations=[DjangoIntegration()],
+    environment='production',  # Set to 'production' or 'development' accordingly
+    release='',  # Specify your application's release version
+    traces_sample_rate=1.0,  # Set the sample rate for tracing
+)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'sentry_sdk.integrations.django.DjangoHandler',
+        },
+    },
+    'root': {
+        'handlers': ['sentry'],
+        'level': 'ERROR',
+    },
+}
