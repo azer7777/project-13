@@ -1,5 +1,8 @@
-from django.shortcuts import render
+import logging
 from .models import Profile
+from django.shortcuts import render
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -12,9 +15,15 @@ def index(request):
     Returns:
     - A rendered HTML page displaying the list of user profiles.
     """
-    profiles_list = Profile.objects.all()
-    context = {"profiles_list": profiles_list}
-    return render(request, "profiles/index.html", context)
+    try:
+        profiles_list = Profile.objects.all()
+        context = {"profiles_list": profiles_list}
+        logger.info("Successfully retrieved user profiles for the index page.")
+        return render(request, "profiles/index.html", context)
+    except Exception as e:
+        logger.error(f"An error occurred while retrieving user profiles: {e}", exc_info=True)
+        # Handle the error or re-raise it if necessary
+        raise
 
 
 def profile(request, username):
@@ -28,6 +37,12 @@ def profile(request, username):
     Returns:
     - A rendered HTML page displaying the details of the specified user profile.
     """
-    profile = Profile.objects.get(user__username=username)
-    context = {"profile": profile}
-    return render(request, "profiles/profile.html", context)
+    try:
+        profile = Profile.objects.get(user__username=username)
+        context = {"profile": profile}
+        logger.info(f"Successfully retrieved profile for user: {username}")
+        return render(request, "profiles/profile.html", context)
+    except Exception as e:
+        logger.error(f"An error occurred while retrieving user profile: {e}", exc_info=True)
+        # Handle the error or re-raise it if necessary
+        raise

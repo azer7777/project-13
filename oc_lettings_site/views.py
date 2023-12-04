@@ -1,4 +1,7 @@
+import logging
 from django.shortcuts import render
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -11,7 +14,13 @@ def index(request):
     Returns:
     - A rendered HTML page for the index.
     """
-    return render(request, "index.html")
+    try:
+        logger.info("Rendering the index page.")
+        return render(request, "index.html")
+    except Exception as e:
+        logger.error(f"An error occurred while rendering the index page: {e}", exc_info=True)
+        # Handle the error or re-raise it if necessary
+        raise
 
 
 def custom_404(request, exception):
