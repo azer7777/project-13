@@ -18,6 +18,11 @@ jobs:
       with:
         python-version: 3.11
 
+    - name: Load .env file
+      run: |
+        echo "DOCKER_USERNAME=$(grep DOCKER_USERNAME .env | cut -d '=' -f2)" >> $GITHUB_ENV
+        echo "DOCKER_PASSWORD=$(grep DOCKER_PASSWORD .env | cut -d '=' -f2)" >> $GITHUB_ENV
+
     - name: Build Docker image
       run: |
         IMAGE_TAG=$(git rev-parse --short=7 HEAD)  # Get the short commit hash
@@ -26,12 +31,6 @@ jobs:
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         docker push $DOCKER_USERNAME/project-13:$IMAGE_TAG
         docker push $DOCKER_USERNAME/project-13:latest
-
-    - name: Log in to Docker Hub
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image to Docker Hub
       run: docker push azer7777/project-13:$IMAGE_TAG && docker push azer7777/project-13:latest
