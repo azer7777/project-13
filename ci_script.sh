@@ -5,7 +5,7 @@ set -e
 pip install -r requirements.txt
 
 # Run linting
-flake8 PROJECT-13/
+flake8 oc_lettings_site/
 
 
 # Run tests

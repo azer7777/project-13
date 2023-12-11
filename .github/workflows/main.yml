@@ -19,7 +19,7 @@ jobs:
         python-version: 3.11
 
     - name: Build Docker image
-      run: docker build -t your_username/project-13:latest .
+      run: docker build -t your_username/oc_lettings_site:latest .
 
     - name: Run CI script
       run: bash ci_script.sh
