@@ -38,4 +38,3 @@ jobs:
 
     - name: Run CI script
       run: bash ci_script.sh
-
