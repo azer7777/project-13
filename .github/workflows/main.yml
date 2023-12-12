@@ -20,16 +20,15 @@ jobs:
 
     - name: Build Docker image
       run: |
-        IMAGE_TAG=$(git rev-parse --short=7 HEAD)  # Get the short commit hash
-        docker build -t azer7777/project-13:$IMAGE_TAG .
-        docker tag azer7777/project-13:$IMAGE_TAG azer7777/project-13:latest
-        echo $dckr_pat_Hxjqf0zvMOm3p__3x_5boJhzLbQ | docker login -u $azer7777 --password-stdin
-        docker push $azer7777/project-13:$IMAGE_TAG
-        docker push $azer7777/project-13:latest
-
-    - name: Log in to Docker Hub
-      run: echo $dckr_pat_Hxjqf0zvMOm3p__3x_5boJhzLbQ | docker login -u $azer7777 --password-stdin
-
+          IMAGE_TAG=$(git rev-parse --short=7 HEAD)  # Get the short commit hash
+          docker build -t $DOCKER_USERNAME/project-13:$IMAGE_TAG .
+          docker tag $DOCKER_USERNAME/project-13:$IMAGE_TAG $DOCKER_USERNAME/project-13:latest
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          docker push $DOCKER_USERNAME/project-13:$IMAGE_TAG
+          docker push $DOCKER_USERNAME/project-13:latest
+      env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image to Docker Hub
       run: docker push azer7777/project-13:$IMAGE_TAG && docker push azer7777/project-13:latest
