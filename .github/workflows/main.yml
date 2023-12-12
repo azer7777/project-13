@@ -18,7 +18,7 @@ jobs:
       with:
         python-version: 3.11
 
-    - name: Build Docker image
+    - name: Build Docker image and push it to Docker Hub
       run: |
           IMAGE_TAG=$(git rev-parse --short=7 HEAD)  # Get the short commit hash
           docker build -t $DOCKER_USERNAME/project-13:$IMAGE_TAG .
@@ -29,9 +29,6 @@ jobs:
       env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Push Docker image to Docker Hub
-      run: docker push azer7777/project-13:$IMAGE_TAG && docker push azer7777/project-13:latest
 
     - name: Run CI script
       run: bash ci_script.sh
