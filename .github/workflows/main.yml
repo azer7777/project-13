@@ -10,25 +10,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-       
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.11
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Build Docker image and push it to Docker Hub
-      run: |
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Build Docker image and push it to Docker Hub
+        run: |
           IMAGE_TAG=$(git rev-parse --short=7 HEAD)  # Get the short commit hash
           docker build -t $DOCKER_USERNAME/project-13:$IMAGE_TAG .
           docker tag $DOCKER_USERNAME/project-13:$IMAGE_TAG $DOCKER_USERNAME/project-13:latest
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
           docker push $DOCKER_USERNAME/project-13:$IMAGE_TAG
           docker push $DOCKER_USERNAME/project-13:latest
-      env:
+        env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Run CI script
-      run: bash ci_script.sh
+      - name: Run CI script
+        run: bash ci_script.sh
+
+  deploy:
+    needs: build  # Ensure the build job completes before deploying
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Render
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Deploy
+        run: |
+          curl -X GET $DEPLOY_HOOK
+        env:
+          DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
