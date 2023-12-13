@@ -9,12 +9,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 SENTRY_DSN = os.getenv('SENTRY_DSN', default='')
-SECRET_KEY = os.getenv('SECRET_KEY', default='')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY
+from django.core.exceptions import ImproperlyConfigured
+
+def get_secret_key():
+    secret_key = os.getenv('SECRET_KEY', default='')
+    if not secret_key:
+        raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+    return secret_key
+
+SECRET_KEY = get_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
