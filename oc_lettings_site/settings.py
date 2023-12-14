@@ -3,32 +3,26 @@ import sentry_sdk
 from pathlib import Path
 from dotenv import load_dotenv
 from sentry_sdk.integrations.django import DjangoIntegration
-from django.core.exceptions import ImproperlyConfigured
+load_dotenv()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv()
-SENTRY_DSN = os.getenv("SENTRY_DSN", default="")
 
+
+SENTRY_DSN = os.environ.get("SENTRY_DSN", default="")
+print(f"DEBUG: SECRET_KEY from env: {SENTRY_DSN}")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-def get_secret_key():
-    secret_key = os.getenv("SECRET_KEY", default="")
-    if not secret_key:
-        raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
-    return secret_key
-
-
-SECRET_KEY = get_secret_key()
-
+SECRET_KEY = os.environ.get("SECRET_KEY", default="")
+print(f"DEBUG: SECRET_KEY from env: {SECRET_KEY}")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "project-13-ulxd.onrender.com", "ulxd.onrender.com"]
 
 
 # Application definition
