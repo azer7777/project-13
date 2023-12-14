@@ -3,8 +3,8 @@ import sentry_sdk
 from pathlib import Path
 from dotenv import load_dotenv
 from sentry_sdk.integrations.django import DjangoIntegration
-load_dotenv()
 
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
