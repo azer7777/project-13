@@ -33,7 +33,7 @@ jobs:
       - name: Run CI script
         run: bash ci_script.sh
         env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          THE_SECRET_KEY: ${{ secrets.THE_SECRET_KEY }}
 
   deploy:
     needs: build  # Ensure the build job completes before deploying
