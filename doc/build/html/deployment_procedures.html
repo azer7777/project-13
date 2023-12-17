@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deployment and Management &#8212; project-13 latest documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=c6e86fd7"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="User Guide" href="user_guide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="deployment-and-management">
+<span id="deployment-procedures"></span><h1>Deployment and Management<a class="headerlink" href="#deployment-and-management" title="Link to this heading">¶</a></h1>
+<p>This section provides detailed instructions on deploying and managing the “project-13” project. Follow these steps to ensure a successful deployment.</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<p>Follow the steps in the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation Guide</span></a> guide to set up the development environment and install the necessary dependencies.</p>
+</section>
+<section id="docker-configuration">
+<h2>Docker Configuration<a class="headerlink" href="#docker-configuration" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Docker Installation:</strong>
+- Install Docker on your local machine.</p></li>
+<li><p><strong>Docker Compose:</strong>
+- Create a <cite>docker-compose.yml</cite> file for local development.
+- Run <cite>docker-compose up</cite> to start the development server.</p></li>
+</ol>
+</section>
+<section id="docker-deployment">
+<h2>Docker Deployment<a class="headerlink" href="#docker-deployment" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Building Docker Image:</strong>
+- Build a Docker image for the “project-13” project.</p></li>
+<li><p><strong>Push to Docker Hub:</strong>
+- Push the Docker image to Docker Hub.</p></li>
+</ol>
+</section>
+<section id="render-deployment">
+<h2>Render Deployment<a class="headerlink" href="#render-deployment" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Render Account:</strong>
+- Sign up for an account on Render.</p></li>
+<li><p><strong>Create a New Web Service:</strong>
+- Create a new web service on Render.</p></li>
+<li><p><strong>Configure Deployment:</strong>
+- Connect Render to your GitHub repository.
+- Set the deployment branch.</p></li>
+<li><p><strong>Environment Variables:</strong>
+- Add environment variables for sensitive information.</p></li>
+<li><p><strong>Deploy:</strong>
+- Trigger a manual deployment or wait for automatic deployments on each push.</p></li>
+</ol>
+</section>
+<section id="logging-and-monitoring">
+<h2>Logging and Monitoring<a class="headerlink" href="#logging-and-monitoring" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Sentry Integration:</strong>
+- Set up a Sentry account.</p></li>
+<li><p><strong>Integrate Sentry:</strong>
+- Add Sentry credentials to the project settings.
+- Insert appropriate logs in critical functions, try/except blocks, and data validation points.</p></li>
+</ol>
+</section>
+<section id="updating-versions">
+<h2>Updating Versions<a class="headerlink" href="#updating-versions" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Version Control:</strong>
+- Use version control (e.g., Git) for tracking changes.</p></li>
+<li><p><strong>Continuous Integration:</strong>
+- Set up a CI/CD pipeline to automate testing, linting, and deployment.</p></li>
+</ol>
+<p>That’s it! You have successfully deployed and configured the “project-13” project. If you encounter any issues or need assistance, refer to the <span class="xref std std-ref">contact</span> section for support.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">project-13</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies Used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_structure.html">Database Structure and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming_interfaces.html">Programming Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment and Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-configuration">Docker Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-deployment">Docker Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#render-deployment">Render Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-and-monitoring">Logging and Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-versions">Updating Versions</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="user_guide.html" title="previous chapter">User Guide</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, azer7777.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/deployment_procedures.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
