@@ -76,6 +76,48 @@ Password:
 ````
 Abc1234!
 ````
+# Project Name
+
+[Description of your project]
+
+## CI/CD Pipeline
+
+This project includes a CI/CD (Continuous Integration/Continuous Deployment) pipeline that automates the testing, building, and deployment processes. The pipeline is configured using GitHub Actions.
+
+### Workflow Overview
+
+The CI/CD workflow consists of the following main steps:
+
+1. **Check:** Runs testing, linting and code quality checks.
+
+2. **Build:** Builds and tags the Docker image, then pushes it to Docker Hub.
+
+3. **Deploy:** Triggers the deployment process, such as updating a Render web service.
+
+### Setting Up CI/CD
+
+To set up the CI/CD pipeline for this project, follow these steps:
+
+1. **Fork the Repository:** Fork this repository to your GitHub account.
+
+2. **Configure Secrets:** Go to your forked repository's settings and configure the following secrets:
+   - `DOCKER_USERNAME`: Your Docker Hub username.
+   - `DOCKER_PASSWORD`: Your Docker Hub password.
+   - `SECRET_KEY`: Django secret key.
+   - `DEPLOY_HOOK`: Your deployment webhook (if applicable).
+
+3. **Run the Pipeline:** Push changes to your repository, and GitHub Actions will automatically run the CI/CD pipeline.
+
+### Workflow File
+
+The CI/CD workflow is defined in the [`.github/workflows/ci_cd.yml`](.github/workflows/ci_cd.yml) file.
+
+### Important Notes
+
+- Ensure that your Docker Hub repository and Render service are set up correctly.
+- Monitor the CI/CD workflow on the Actions tab in your GitHub repository.
+
+Feel free to customize the pipeline based on your specific requirements and deployment environment.
 
 ## Deployment
 
