@@ -1,77 +1,132 @@
-## Résumé
+# Project-13
 
-Site web d'Orange County Lettings
+# Orange County Lettings website
 
-## Développement local
+## Prerequisites
 
-### Prérequis 
-
-- Compte GitHub avec accès en lecture à ce repository
+- GitHub account with read access to this repository
 - Git CLI
 - SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+- Python interpreter, version 3.6 or higher
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
 
-### macOS / Linux
+## Installation
 
-#### Cloner le repository
+1. Clone the repository:
+````
+git clone https://github.com/azer7777/Project-12.git
+````
+2. Create a virtual environment and activate it:
+````
+python -m venv venv 
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+````
+3. Install dependencies:
+````
+pip install -r requirements.txt
+````
+4. Run the Application:
+````
+python main.py
+````
+## Tests and reports
 
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+1. Running Tests with pytest:
+````
+pytest
+````
+To generate an HTML report:
+````
+pytest --html=pytest_report.html
+````
+2. Generating Code Coverage Report:
+````
+coverage run -m pytest
+````
+Generate the coverage report:
+````
+coverage html
+````
+Access the HTML coverage report in the htmlcov directory.
 
-#### Créer l'environnement virtuel
+3. Linting:
+````
+flake8.
+````
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+### Database
 
-#### Exécuter le site
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
-
-#### Linting
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `flake8`
-
-#### Tests unitaires
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pytest`
-
-#### Base de données
-
-- `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
+- Open shell session `sqlite3`
+- Access the database `.open oc-lettings-site.sqlite3`
+- Display the tables in the database `.tables`
+- Show columns in profile table, `pragma table_info(Python-OC-Lettings-FR_profile);`
+- Run a query on the profile table, `select user_id, favorite_city from
   Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+- `.quit` to quit
 
-#### Panel d'administration
+## Administration panel
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+Navigate to `http://localhost:8000/admin` and log in
 
-### Windows
+User:
+````
+admin
+````
+Password:
+````
+Abc1234!
+````
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+## Deployment
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+### Overview
+
+This project is deployed using Docker and hosted on Render. Docker Hub is used to store and manage Docker images, while Render provides a platform for easy deployment and hosting.
+
+### Configuration
+
+To deploy this project, ensure you have the following configurations in place:
+
+1. **Docker Hub Account:**
+   - Create an account on Docker Hub: [Docker Hub](https://hub.docker.com/).
+
+2. **Render Account:**
+   - Create an account on Render: [Render](https://render.com/).
+
+3. **GitHub Repository:**
+   - The project should be hosted on GitHub.
+
+### Deployment Steps
+
+Follow these steps to deploy the project:
+
+1. **Build Docker Image:**
+   - Make sure your Docker image is ready and available on Docker Hub.
+
+2. **Configure Render:**
+   - Create a new web service on Render.
+   - Link your GitHub repository to Render for automatic deployments.
+   - Set up environment variables on Render for any sensitive information or configuration needed by your application.
+
+3. **Configure Docker Image on Render:**
+   - In the Render dashboard, specify the Docker image from Docker Hub that you want to deploy.
+   - Set the necessary environment variables for your application within the Render dashboard.
+
+4. **Deploy the Service:**
+   - Trigger a manual deployment or wait for Render to automatically deploy your application whenever changes are pushed to the linked GitHub repository.
+
+5. **Access the Deployed Application:**
+   - Once the deployment is complete, access your application on the provided Render URL.
+
+### Notes
+
+- Ensure that your Docker image includes all the necessary dependencies and configurations for the application to run smoothly in a production environment.
+- Regularly check the Render dashboard for deployment logs and updates.
+- Refer to the [Render documentation](https://render.com/docs) for more detailed information on managing services and deployments.
+
+**Congratulations!** Your application is now deployed and accessible via the provided Render URL.
+
+---
+
+Feel free to customize the steps and details based on your specific project requirements and deployment process.
+
