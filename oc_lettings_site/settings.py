@@ -47,6 +47,8 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
+CSRF_COOKIE_SECURE = True
+
 ROOT_URLCONF = "oc_lettings_site.urls"
 
 TEMPLATES = [
