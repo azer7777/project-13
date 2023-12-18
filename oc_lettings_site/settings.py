@@ -17,7 +17,7 @@ SENTRY_DSN = os.environ.get("SENTRY_DSN", default="")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", default="")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "project-13-ulxd.onrender.com", "ulxd.onrender.com"]
 
