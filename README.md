@@ -76,9 +76,6 @@ Password:
 ````
 Abc1234!
 ````
-# Project Name
-
-[Description of your project]
 
 ## CI/CD Pipeline
 
@@ -110,7 +107,7 @@ To set up the CI/CD pipeline for this project, follow these steps:
 
 ### Workflow File
 
-The CI/CD workflow is defined in the [`.github/workflows/ci_cd.yml`](.github/workflows/ci_cd.yml) file.
+The CI/CD workflow is defined in the [`.github/workflows/main.yml`](.github/workflows/main.yml) file.
 
 ### Important Notes
 
