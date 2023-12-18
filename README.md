@@ -54,7 +54,7 @@ Access the HTML coverage report in the htmlcov directory.
 flake8.
 ````
 
-### Database
+## Database
 
 - Open shell session `sqlite3`
 - Access the database `.open oc-lettings-site.sqlite3`
