@@ -12,7 +12,7 @@ env:
   DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,17 +24,25 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Build Docker image and push it to Docker Hub
+      - name: Run CI script
+        run: bash ci_script.sh
+
+  build:
+    needs: check # Ensure the check job completes before building
+    runs-on: ubuntu-latest    
+    steps:
+      
+      - name: Build Docker
         run: |
           IMAGE_TAG=$(git rev-parse --short=7 HEAD)  # Get the short commit hash
           docker build -t $DOCKER_USERNAME/project-13:$IMAGE_TAG .
           docker tag $DOCKER_USERNAME/project-13:$IMAGE_TAG $DOCKER_USERNAME/project-13:latest
+          
+      - name: Puch Docker image to Docker Hub
+        run:    
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
           docker push $DOCKER_USERNAME/project-13:$IMAGE_TAG
           docker push $DOCKER_USERNAME/project-13:latest
-
-      - name: Run CI script
-        run: bash ci_script.sh
 
   deploy:
     needs: build  # Ensure the build job completes before deploying
